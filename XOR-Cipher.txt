@@ -1,0 +1,31 @@
+XOR Cipher
+Two input XOR gives output as 0 when both the inputs are identical,1 otherwise.
+Also if X XOR Y equals Z,then Z XOR Y equals X. This property of XOR has been exploited here.
+This makes the encryption and decryption procedures identical.
+
+In this cipher, all the alphabets(and a few digits) are represented in binary as follows-
+A 00000(0)
+B 00001(1)
+.
+.
+Z 11001(25)
+1 11010(26)
+.
+.
+6 11111(31)
+
+A 5-bit key is chosen at random which is XORed with each of the alphabets(in binary) present in the message, to encrypt or decrypt accordingly. 
+An example will simplify things.
+
+Consider a message: 	N     I     T  	  K
+Binary 			01101 01000 10011 01010
+Chosen Key  		10110 10110 10110 10110
+After XOR   		11011 11110 00101 11100
+Encrypted message	2     5     F     3
+Corresponding Binary	11011 11110 00101 11100
+Chosen Key		10110 10110 10110 10110
+After XOR	       	01101 01000 10011 01010
+Decrypted message       N     I	    T	  K
+
+
+

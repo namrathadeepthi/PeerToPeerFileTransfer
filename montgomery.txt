@@ -1,0 +1,4 @@
+In modular arithmetic computation, Montgomery modular multiplication, more commonly referred to as Montgomery multiplication, is a method for performing fast modular multiplication, introduced in 1985 by the American mathematician Peter L. Montgomery. [1] [2] 
+
+Given two integers a and b, the classical modular multiplication algorithm computes ab mod N. Montgomery multiplication works by transforming a and b into a special representation known as Montgomery form. For a modulus N, the Montgomery form of a is defined to be aR mod N for some constant R depending only on N and the underlying computer architecture. If aR mod N and bR mod N are the Montgomery forms of a and b, then their Montgomery product is abR mod N. Montgomery multiplication is a fast algorithm to compute the Montgomery product. Transforming the result out of Montgomery form yields the classical modular product ab mod N. 
+

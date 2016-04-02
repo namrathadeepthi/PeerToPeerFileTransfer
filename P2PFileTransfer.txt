@@ -1,0 +1,58 @@
+
+		RSA Secure P2P Text File Transfer System 
+
+Problem Statement: Project aims to develop an RSA-secure peer to peer text-file transfer.
+
+Assumptions:
+The server-peer connection is more secure than the peer-peer connection.
+
+Objectives:
+creating server processes that wait for connections,
+creating client processes that contact server and exchange data 
+creating and managing a centralised index at the server based on information provided by the peers
+implementing a server that is capable of carrying out communication with multiple peers.
+establishing connection between two peers through a centralised server and transferring files between them via sockets.
+
+Abstract:
+Our project aims to develop a peer to peer(P2P) text-file sharing system with a centralised server(S). There are two types of communications taking place-P2P and P2S. All communication among peers or between a peer and the server will take place over TCP.
+This system will operate as follows:
+-There is a centralised server, running on a well-known host and listening on a well-known port, which keeps information about the active peers
+-When a peer decides to join the system, it opens a connection to the server to register. This connection remains open as long as the peer remains active; the peer closes the connection when it leaves the system.
+-When a peer wishes to download a specific file, the server provides the peer with a list of other peers who have the file; if no such active peer exists, an appropriate message is transmitted to the requesting peer.
+-Each peer runs an upload server process that listens on a port specific to the peer.
+
+Server
+The server waits for connections from the peers. For each peer that connects to it, the server generates an RSA public key(n,e) and private key(n,d). Public key is used to encrypt the data, while the private key is used to decrypt. The server sends the public key to the peer when it connects to it. While the private key is sent to the peer that requests for files from a particular peer. The server maintains three array lists contains: 1) information about the currently active peers 2) files available at each peer 3) list of all files.
+When a peer joins the system, it provides its peer-name, IP Address and upload port number to the server and the server creates a new peer record and adds it to the array list. The peer also adds the files it wants to share to the server’s database.
+When a peer leaves the system, the server searches all the array lists and removes all records associated with this peer.
+
+Peer
+A peer has two roles to play-
+-as a Server
+When a peer wishes to join the system, it first instantiates an upload server process listening to any available local port.It keeps this connection open until it leaves the system. A peer gets requests from other peers for files. In such a case, the requested file is encrypted using the public key received from the server and the RSA encrypted file is sent via sockets to the other peer. 
+-as a Client
+The peer may send requests to the server over this open connection and receive responses. 
+When a peer(P1) requests the server for a particular file and chooses a peer(P2) from whom he wants to receive the file, the server sends the private key(of the peer P2) to the requesting peer(P1). This will help him decrypt the file that will be sent over to him.
+
+JAVA Concepts exploited:
+MultiThreading
+File I/O
+Anonymous classes
+Collections- ArrayList
+Synchronized Methods
+GUI - Swing and awt
+Exception Handling
+Socket Programming
+Inheritance
+Polymorphism 
+Encapsulation
+Abstraction
+
+Team Members
+
+14IT106 Ammanamanchi Namratha Deepthi
+14IT130 Parvathi M H
+14IT234 Rama Shanbhag
+14IT142 Sindhoora Prakash
+14IT144 Soundarya Ramesh
+
